@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Reciclagem Criativa</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reciclagem Criativa</h1>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#dicas">Dicas de Reciclagem</a></li>
+                    <li><a href="#compartilhar">Compartilhe sua Dica</a></li>
+                    <li><a href="#objetos">Objetos Recicláveis</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="sobre">
+            <h2>O que é Reciclagem?</h2>
+            <p>A reciclagem é o processo de transformar materiais que seriam descartados em novos produtos. Isso ajuda a reduzir o desperdício, economizar energia e proteger o meio ambiente.</p>
+        </section>
+
+        <section id="dicas">
+            <h2>Dicas de Reciclagem</h2>
+            <ul>
+                <li><strong>Papel:</strong> Separe o papel limpo e seco para reciclagem.</li>
+                <li><strong>Plástico:</strong> Verifique o símbolo de reciclagem e limpe os recipientes antes de descartar.</li>
+                <li><strong>Vidro:</strong> Recipientes de vidro podem ser reciclados infinitas vezes.</li>
+                <li><strong>Metal:</strong> Latas de alumínio e ferro são fáceis de reciclar e reaproveitar.</li>
+            </ul>
+        </section>
+
+        <section id="compartilhar">
+            <h2>Compartilhe sua Dica</h2>
+            <form id="dicaForm">
+                <label for="nome">Seu Nome:</label>
+                <input type="text" id="nome" required>
+
+                <label for="dica">Sua Dica de Reciclagem:</label>
+                <textarea id="dica" required></textarea>
+
+                <button type="submit">Enviar Dica</button>
+            </form>
+            <ul id="listaDicas"></ul>
+        </section>
+
+        <section id="objetos">
+            <h2>Objetos Recicláveis</h2>
+            <form id="objetosForm">
+                <label for="objeto1">Primeiro Objeto Reciclável:</label>
+                <input type="text" id="objeto1" required>
+
+                <label for="objeto2">Segundo Objeto Reciclável:</label>
+                <input type="text" id="objeto2" required>
+
+                <label for="importancia">Por que é importante reciclar esses objetos?</label>
+                <textarea id="importancia" required></textarea>
+
+                <button type="submit">Enviar Objetos</button>
+            </form>
+            <ul id="listaObjetos"></ul>
+        </section>
+    </div>
+
+    <script>
+        const dicaForm = document.getElementById('dicaForm');
+        const listaDicas = document.getElementById('listaDicas');
+
+        dicaForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const dica = document.getElementById('dica').value;
+
+            const dicaItem = document.createElement('li');
+            dicaItem.textContent = `${nome}: ${dica}`;
+            listaDicas.appendChild(dicaItem);
+
+            dicaForm.reset();
+        });
+
+        const objetosForm = document.getElementById('objetosForm');
+        const listaObjetos = document.getElementById('listaObjetos');
+
+        objetosForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const objeto1 = document.getElementById('objeto1').value;
+            const objeto2 = document.getElementById('objeto2').value;
+            const importancia = document.getElementById('importancia').value;
+
+            const objetoItem = document.createElement('li');
+            objetoItem.textContent = `Objetos: ${objeto1}, ${objeto2}. Importância: ${importancia}`;
+            listaObjetos.appendChild(objetoItem);
+
+            objetosForm.reset();
+        });
+    </script>
+</body>
+</html>
